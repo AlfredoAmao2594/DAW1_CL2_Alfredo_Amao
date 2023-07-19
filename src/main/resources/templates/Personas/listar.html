@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Listado de Personas</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <a th:href="@{/personas}">Personas</a>
+
+    <h1>Listado de Personas 2023</h1>
+
+    <a th:href="@{/personas/create}">Registrar persona</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="persona: ${personas}">
+                <td th:text="${persona.id}"></td>
+                <td th:text="${persona.nombre}"></td>
+                <td th:text="${persona.apellido}"></td>
+                <td th:text="${persona.dni}"></td>
+                <td th:text="${persona.edad}"></td>
+                <td>
+                    <a th:href="@{/personas/{id}(id=${persona.id})}">Ver</a>
+                </td>
+                <td>
+                    <a th:href="@{/personas/{id}/edit(id=${persona.id})}">Editar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Editar Persona</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <a th:href="@{/personas}">Personas</a>
+
+    <form th:action="@{/personas/{id}/delete(id=${persona.id})}" method="post">
+        <button>Eliminar</button>
+    </form>
+
+    <h1>Editar persona</h1>
+    <form th:action="@{/personas/{id}(id=${persona.id})}" method="post" th:object="${persona}">
+    	<p>Nombre: <input type="text" th:field="*{nombre}"/></p>
+        <p>Apellido: <input type="text" th:field="*{apellido}"/></p>
+        <p>DNI: <input type="text" th:field="*{dni}"/></p>
+        <p>Edad: <input type="text" th:field="*{edad}"/></p>
+        <button>Guardar</button>
+    </form>
+</body>
+</html>
